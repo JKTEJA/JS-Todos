@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<title>Hello, world!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+      .fill{
+          display:none;
+      }
+  </style>
+
+
+    
+</head>
+<body style="background-color:yellowgreen ;" >
+
+    <form class="searching" >
+        <div class="form-group m-5" >
+        <input class="form-control" type="text" name="search">
+        </div>
+    </form>
+    <ul class="ulList">
+        <div class="list-group m-5">
+<li  class="list-group-item d-flex justify-content-between" ><span>LIST1</span><i class="fa fa-trash" aria-hidden="true"></i></li>
+<li  class="list-group-item d-flex justify-content-between"><span>LIST2</span><i class="fa fa-trash" aria-hidden="true"></i></li>
+<li  class="list-group-item d-flex justify-content-between"><span>LIST3</span><i class="fa fa-trash" aria-hidden="true"></i></li>
+   </div> 
+</ul>
+    <form class="adding">
+        <div class="form-group m-5">
+        <input  style="width: 90%; padding: 7px; outline: white;" type="text" name="add">
+        <input style="background-color:green;border:1px solid green;border-radius:5px; padding:7px; width: 9%;" type="submit" value="add">
+    </div>
+    </form>
+ 
+
+    <script>
+        var s1=document.querySelector(".searching")//form
+        var u=document.querySelector('.ulList') //ul
+        var icone=document.querySelector('.fa-trash') //icone
+        var a1=document.querySelector('.adding')//form
+//============== keyup event (search method)===============//
+var s3=function(jk1){
+    // console.log(jk1)
+    // console.log(u.children)
+var s4=Array.from(u.children)//array.from convert html collections into array
+// console.log(s4)
+s4.filter(function(jk2){ //filter method convert array to saparet element
+    // console.log(jk2)
+    //  console.log(jk2.textContent.includes(jk1))
+    return !jk2.textContent.includes(jk1)    
+})
+.forEach(function(n1){
+    n1.classList.add('fill')
+})
+s4.filter(function(jk2){
+    return jk2.textContent.includes(jk1)    
+})
+.forEach(function(n1){
+    n1.classList.remove('fill')
+})
+}
+s1.addEventListener('keyup',function(e){
+    // console.log(e)
+    var s2=s1.search.value
+    // console.log(s2)
+    s3(s2)
+})
+//============== keyup event end (search method)===============//
+
+//============= click event (delete method) ===============//
+u.addEventListener('click',function(e){
+    // console.log(e)
+    if(e.target.classList.contains('fa-trash')){
+        console.log(e.target.parentElement.remove())
+    }
+})
+//============= click event end (delete method) ===============//
+//============= submit event (adding method) ============== //
+var a3=function(jk){
+    // console.log(jk)
+    var h1=`<li><span>${jk}</span><i class="fa fa-trash" aria-hidden="true"></i></li>`
+  u.innerHTML+=h1;  
+}
+a1.addEventListener('submit',function(e){
+    // console.log(e)
+    e.preventDefault();
+    // console.log(e)
+    // console.log(a1.add.value)
+    var a2=a1.add.value
+    // console.log(a2)
+
+    a1.reset()
+    a3(a2)
+
+})
+//============= submit event end (adding method) ============== //
+
+    </script>
+ 
+
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
